@@ -38,9 +38,7 @@
     Create new weapon and option to switch between the two weapons
     
     First I add new other weapon to the player, and put the two weapons under WeaponHolder with the WeaponSwitching c# script:
-    ```csharp
-using UnityEngine;
-
+```csharp
 public class WeaponSwitching : MonoBehaviour
 {
     public int selectedweapon = 0;
@@ -81,8 +79,7 @@ public class WeaponSwitching : MonoBehaviour
         }
     }
 }
-
-    ```
+```
     
    
    
