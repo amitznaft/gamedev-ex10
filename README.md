@@ -31,20 +31,8 @@
         velocity = transform.transform.TransformDirection(velocity);
         _cc.Move(velocity * Time.deltaTime);
     }
-
-
-    private void Reload()
-    {
-        StartCoroutine(ShootingCoolDownRoutine());
-    }
-
-    IEnumerator ShootingCoolDownRoutine()
-    {
-        yield return new WaitForSeconds(1.5f);
-        _ammo = _startAmmo;
-        _isReloading = false;
-    }
     ```
+    that is, a check is made on whether the player is on the ground and also if a space key is pressed, then _yVelocity = _jumpHighet, other _yVelocity -= _gravity * Time.deltaTime (put it back on the floor by gravity) and then move the CharacterController by the velocity.
     
    
    
