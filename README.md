@@ -34,5 +34,55 @@
     ```
     that is, a check is made on whether the player is on the ground and also if a space key is pressed, then _yVelocity = _jumpHighet, other _yVelocity -= _gravity * Time.deltaTime (put it back on the floor by gravity) and then move the CharacterController by the velocity.
     
+2.  Weapon:
+    Create new weapon and option to switch between the two weapons
+    
+    First I add new other weapon to the player, and put the two weapons under WeaponHolder with the WeaponSwitching c# script:
+    ```csharp
+using UnityEngine;
+
+public class WeaponSwitching : MonoBehaviour
+{
+    public int selectedweapon = 0;
+    void Start()
+    {
+        Selectedweapon();
+    }
+    void Update()
+    {
+        int previousSelectedWeapon = selectedweapon;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedweapon = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectedweapon = 1;
+        }
+        if (previousSelectedWeapon != selectedweapon)
+        {
+            Selectedweapon();
+        }
+    }
+    void Selectedweapon()
+    {
+        int i = 0;
+        foreach (Transform weapon in transform)
+        {
+            if (i == selectedweapon)
+            {
+                weapon.gameObject.SetActive(true);
+            }
+            else
+            {
+                weapon.gameObject.SetActive(false);
+            }
+            i++;
+        }
+    }
+}
+
+    ```
+    
    
    
