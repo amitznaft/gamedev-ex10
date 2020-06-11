@@ -80,6 +80,38 @@ public class WeaponSwitching : MonoBehaviour
     }
 }
 ```
-    
-   
+ The weapons can be swapped by the keys 1,2. Each time we perform a test that the weapon changes and updates its SetActive accordingly.  
+ 
+ 3. Interaction:
+ There is a character on the left when the game starts, when pressed the E key closed to her she will say hey.
+ 
+ I add the character to the game and give her CharacterTalk c# script:
+```csharp
+public class CharcterTalk : MonoBehaviour
+{
+
+    [SerializeField]
+    AudioSource _audioS;
+    private float lookRadius = 2f;
+    [SerializeField] GameObject _player;
+    private Vector3 _ppos;
+    // Start is called before the first frame update
+    void Start()
+    {
+        _audioS = GetComponent<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        _ppos = _player.transform.position;
+        float distance = Vector3.Distance(_ppos, transform.position);
+        if (distance <= lookRadius && Input.GetKeyDown(KeyCode.E))
+        {
+            _audioS.Play();
+        }
+    }
+}
+```
+A radius is set to 2f, if the character distance from the player is smaller than the radius and also the E key is pressed so will play the audio clip of the character that says hey
    
